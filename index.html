@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 5 AI Tools 2026 - Slideshow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            height: 90vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(102, 126, 234, 0.3);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #ff6b6b, #ffc107, #4caf50, #2196f3, #9c27b0);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .progress-bar.active-cover { width: 16.67%; }
+        .progress-bar.active-1 { width: 33.33%; }
+        .progress-bar.active-2 { width: 50%; }
+        .progress-bar.active-3 { width: 66.67%; }
+        .progress-bar.active-4 { width: 83.33%; }
+        .progress-bar.active-5 { width: 100%; }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: headerSlideIn 1s ease-out forwards;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: shimmer 3s infinite;
+        }
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e0ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 2s ease-in-out infinite;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+        @keyframes headerSlideIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmer {
+            0%, 100% { transform: translate(-100%, 0); }
+            50% { transform: translate(100%, 0); }
+        }
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover-page {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            transition: opacity 0.8s ease;
+        }
+        .cover-page.active {
+            opacity: 1;
+            pointer-events: auto;
+            position: relative;
+        }
+        
+        .cover-title {
+            font-size: 40px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffc107 50%, #4caf50 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            animation: coverTitleFade 1s ease-out backwards;
+        }
+        @keyframes coverTitleFade {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .cover-subtitle {
+            font-size: 16px;
+            color: #d0d0ff;
+            margin-bottom: 30px;
+            font-weight: 500;
+            animation: coverSubtitleFade 1s ease-out 0.2s backwards;
+        }
+        @keyframes coverSubtitleFade {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .highlights {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+        .highlight-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            color: #d0d0ff;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+            animation: highlightFade 0.8s ease-out backwards;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .highlight-item:nth-child(1) { animation-delay: 0.3s; border-left-color: #ff6b6b; }
+        .highlight-item:nth-child(2) { animation-delay: 0.4s; border-left-color: #ffc107; }
+        .highlight-item:nth-child(3) { animation-delay: 0.5s; border-left-color: #4caf50; }
+        .highlight-item:nth-child(4) { animation-delay: 0.6s; border-left-color: #2196f3; }
+        .highlight-item:nth-child(5) { animation-delay: 0.7s; border-left-color: #9c27b0; }
+        @keyframes highlightFade {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .highlight-emoji { font-size: 20px; min-width: 25px; }
+        
+        .cover-footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(102, 126, 234, 0.3);
+            color: #9090b0;
+            font-size: 12px;
+            animation: coverFooterFade 1s ease-out 0.8s backwards;
+        }
+        @keyframes coverFooterFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .tool-card {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            transition: opacity 0.8s ease;
+            overflow-y: auto;
+        }
+        .tool-card.active {
+            opacity: 1;
+            pointer-events: auto;
+            position: relative;
+        }
+        
+        .rank-badge {
+            font-size: 50px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8787 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            animation: rankBounce 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        .tool-card:nth-child(2) .rank-badge {
+            background: linear-gradient(135deg, #ffc107 0%, #ffb74d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tool-card:nth-child(3) .rank-badge {
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tool-card:nth-child(4) .rank-badge {
+            background: linear-gradient(135deg, #2196f3 0%, #64b5f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tool-card:nth-child(5) .rank-badge {
+            background: linear-gradient(135deg, #9c27b0 0%, #ce93d8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        @keyframes rankBounce {
+            from { transform: scale(0.3) rotateZ(-180deg); }
+            to { transform: scale(1) rotateZ(0); }
+        }
+        
+        .tool-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: iconPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+        }
+        .tool-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        @keyframes iconPop {
+            from { opacity: 0; transform: scale(0); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .tool-name {
+            font-size: 30px;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 12px;
+            animation: nameSlide 1s ease-out 0.2s backwards;
+        }
+        @keyframes nameSlide {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .tool-description {
+            font-size: 14px;
+            color: #d0d0ff;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            animation: descFade 1s ease-out 0.4s backwards;
+        }
+        @keyframes descFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .tool-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            animation: detailsFade 1s ease-out 0.6s backwards;
+        }
+        @keyframes detailsFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .detail-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        .detail-label {
+            font-size: 11px;
+            color: #9090b0;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .detail-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .accuracy { color: #fbbf24; }
+        .pricing { color: #86efac; }
+        .users { color: #60a5fa; }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar" id="progressBar"></div>
+        
+        <div class="header">
+            <h1>🚀 TOP 5 AI TOOLS 2026</h1>
+            <p>✨ The Ultimate AI Comparison for Creators & Professionals ✨</p>
+        </div>
+        
+        <div class="content">
+            <!-- COVER PAGE -->
+            <div class="cover-page active">
+                <div class="cover-title">Top AI Tools of the Year</div>
+                <div class="cover-subtitle">Your Essential Guide to the Most Powerful AI Tools</div>
+                <div class="highlights">
+                    <div class="highlight-item"><span class="highlight-emoji">⚡</span><span>Productivity & Automation</span></div>
+                    <div class="highlight-item"><span class="highlight-emoji">🎨</span><span>Content Creation</span></div>
+                    <div class="highlight-item"><span class="highlight-emoji">📊</span><span>Data & Analytics</span></div>
+                    <div class="highlight-item"><span class="highlight-emoji">💼</span><span>Business Applications</span></div>
+                    <div class="highlight-item"><span class="highlight-emoji">🎬</span><span>Creative & Media Tools</span></div>
+                </div>
+                <div class="cover-footer">👉 Click "Next" to explore the top 5 AI tools!</div>
+            </div>
+
+            <!-- TOOL 1 -->
+            <div class="tool-card">
+                <div class="rank-badge">1st</div>
+                <div class="tool-icon">
+                    <svg viewBox="0 0 100 100" width="100" height="100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="chatgptGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#74aa9c;stop-opacity:1" /><stop offset="100%" style="stop-color:#10a37f;stop-opacity:1" /></linearGradient></defs>
+                        <circle cx="50" cy="50" r="48" fill="url(#chatgptGrad)"/>
+                        <path d="M50 20 Q65 35 65 50 Q65 65 50 65 Q35 65 35 50 Q35 35 50 20 M50 30 Q60 40 60 50 Q60 60 50 60 Q40 60 40 50 Q40 40 50 30" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="tool-name">ChatGPT 🚀</div>
+                <div class="tool-description">Best all-round assistant for creativity, coding & problem-solving</div>
+                <div class="tool-details">
+                    <div class="detail-box"><div class="detail-label">Accuracy</div><div class="detail-value accuracy">⭐⭐⭐ (3/5)</div></div>
+                    <div class="detail-box"><div class="detail-label">Users</div><div class="detail-value users">🔥 800M WEEKLY</div></div>
+                    <div class="detail-box"><div class="detail-label">Best For</div><div class="detail-value">Q&A, Writing, Coding</div></div>
+                    <div class="detail-box"><div class="detail-label">Pricing</div><div class="detail-value pricing">FREE + $20/mo</div></div>
+                </div>
+            </div>
+
+            <!-- TOOL 2 -->
+            <div class="tool-card">
+                <div class="rank-badge">2nd</div>
+                <div class="tool-icon">
+                    <svg viewBox="0 0 100 100" width="100" height="100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="claudeGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" /><stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" /></linearGradient></defs>
+                        <circle cx="50" cy="50" r="48" fill="url(#claudeGrad)"/>
+                        <path d="M40 35 L50 50 L40 65 M60 35 L50 50 L60 65" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <circle cx="50" cy="50" r="8" fill="white"/>
+                    </svg>
+                </div>
+                <div class="tool-name">Claude 🌟</div>
+                <div class="tool-description">Excels at analysis, careful writing & long documents</div>
+                <div class="tool-details">
+                    <div class="detail-box"><div class="detail-label">Accuracy</div><div class="detail-value accuracy">⭐⭐⭐⭐⭐ (5/5)</div></div>
+                    <div class="detail-box"><div class="detail-label">Users</div><div class="detail-value users">📈 30M MONTHLY</div></div>
+                    <div class="detail-box"><div class="detail-label">Best For</div><div class="detail-value">Analysis, Reports, Writing</div></div>
+                    <div class="detail-box"><div class="detail-label">Pricing</div><div class="detail-value pricing">FREE + $20/mo</div></div>
+                </div>
+            </div>
+
+            <!-- TOOL 3 -->
+            <div class="tool-card">
+                <div class="rank-badge">3rd</div>
+                <div class="tool-icon">
+                    <svg viewBox="0 0 100 100" width="100" height="100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="geminiGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4285f4;stop-opacity:1" /><stop offset="100%" style="stop-color:#ea4335;stop-opacity:1" /></linearGradient></defs>
+                        <circle cx="50" cy="50" r="48" fill="url(#geminiGrad)"/>
+                        <circle cx="50" cy="30" r="6" fill="white"/><circle cx="65" cy="40" r="6" fill="white"/><circle cx="70" cy="55" r="6" fill="white"/><circle cx="65" cy="70" r="6" fill="white"/><circle cx="50" cy="78" r="6" fill="white"/><circle cx="35" cy="70" r="6" fill="white"/><circle cx="30" cy="55" r="6" fill="white"/><circle cx="35" cy="40" r="6" fill="white"/><circle cx="50" cy="54" r="5" fill="white"/>
+                    </svg>
+                </div>
+                <div class="tool-name">Google Gemini</div>
+                <div class="tool-description">Strong Google integration & excellent web research</div>
+                <div class="tool-details">
+                    <div class="detail-box"><div class="detail-label">Accuracy</div><div class="detail-value accuracy">⭐⭐⭐⭐ (4/5)</div></div>
+                    <div class="detail-box"><div class="detail-label">Users</div><div class="detail-value users">💪 700M MONTHLY</div></div>
+                    <div class="detail-box"><div class="detail-label">Best For</div><div class="detail-value">Web Search, Google Workspace</div></div>
+                    <div class="detail-box"><div class="detail-label">Pricing</div><div class="detail-value pricing">FREE + $20/mo</div></div>
+                </div>
+            </div>
+
+            <!-- TOOL 4 -->
+            <div class="tool-card">
+                <div class="rank-badge">4th</div>
+                <div class="tool-icon">
+                    <svg viewBox="0 0 100 100" width="100" height="100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="perplexityGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0066ff;stop-opacity:1" /><stop offset="100%" style="stop-color:#00d4ff;stop-opacity:1" /></linearGradient></defs>
+                        <circle cx="50" cy="50" r="48" fill="url(#perplexityGrad)"/>
+                        <line x1="50" y1="20" x2="50" y2="35" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="50" y1="65" x2="50" y2="80" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="20" y1="50" x2="35" y2="50" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="65" y1="50" x2="80" y2="50" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="30" y1="30" x2="40" y2="40" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="60" y1="60" x2="70" y2="70" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="70" y1="30" x2="60" y2="40" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="40" y1="60" x2="30" y2="70" stroke="white" stroke-width="2.5" stroke-linecap="round"/><circle cx="50" cy="50" r="10" fill="white"/>
+                    </svg>
+                </div>
+                <div class="tool-name">Perplexity ⭐</div>
+                <div class="tool-description">Best answer engine with real-time web & citations</div>
+                <div class="tool-details">
+                    <div class="detail-box"><div class="detail-label">Accuracy</div><div class="detail-value accuracy">⭐⭐⭐⭐⭐ (5/5)</div></div>
+                    <div class="detail-box"><div class="detail-label">Growth</div><div class="detail-value users">🚀 +370% YoY</div></div>
+                    <div class="detail-box"><div class="detail-label">Best For</div><div class="detail-value">Research, Citations, Facts</div></div>
+                    <div class="detail-box"><div class="detail-label">Pricing</div><div class="detail-value pricing">FREE + $20/mo</div></div>
+                </div>
+            </div>
+
+            <!-- TOOL 5 -->
+            <div class="tool-card">
+                <div class="rank-badge">5th</div>
+                <div class="tool-icon">
+                    <svg viewBox="0 0 100 100" width="100" height="100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="deepseekGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1f2937;stop-opacity:1" /><stop offset="100%" style="stop-color:#111827;stop-opacity:1" /></linearGradient></defs>
+                        <circle cx="50" cy="50" r="48" fill="url(#deepseekGrad)"/>
+                        <circle cx="40" cy="40" r="8" fill="none" stroke="#00d4ff" stroke-width="2"/><circle cx="60" cy="40" r="8" fill="none" stroke="#00d4ff" stroke-width="2"/><circle cx="50" cy="58" r="8" fill="none" stroke="#00d4ff" stroke-width="2"/><line x1="40" y1="48" x2="50" y2="50" stroke="#00d4ff" stroke-width="1.5"/><line x1="60" y1="48" x2="50" y2="50" stroke="#00d4ff" stroke-width="1.5"/><circle cx="50" cy="50" r="3" fill="#00d4ff"/>
+                    </svg>
+                </div>
+                <div class="tool-name">DeepSeek 🚀</div>
+                <div class="tool-description">Cost-efficient reasoning AI with advanced thinking</div>
+                <div class="tool-details">
+                    <div class="detail-box"><div class="detail-label">Accuracy</div><div class="detail-value accuracy">⭐⭐⭐⭐⭐ (5/5)</div></div>
+                    <div class="detail-box"><div class="detail-label">Cost</div><div class="detail-value users">💰 99% Cheaper</div></div>
+                    <div class="detail-box"><div class="detail-label">Best For</div><div class="detail-value">Coding, Math, Logic</div></div>
+                    <div class="detail-box"><div class="detail-label">Pricing</div><div class="detail-value pricing">FREE (R1)</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="previousTool()">← Previous</button>
+            <button onclick="toggleAutoPlay()">▶ Play</button>
+            <button onclick="nextTool()">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const coverPage = document.querySelector('.cover-page');
+        const toolCards = document.querySelectorAll('.tool-card:not(.cover-page)');
+        const totalPages = toolCards.length + 1;
+        let autoPlayInterval;
+        let isAutoPlaying = false;
+
+        function showPage(index) {
+            if (index >= totalPages) index = 0;
+            if (index < 0) index = totalPages - 1;
+            currentIndex = index;
+
+            coverPage.classList.remove('active');
+            toolCards.forEach(card => card.classList.remove('active'));
+
+            const progressBar = document.getElementById('progressBar');
+
+            if (index === 0) {
+                coverPage.classList.add('active');
+                progressBar.className = 'progress-bar active-cover';
+            } else {
+                toolCards[index - 1].classList.add('active');
+                progressBar.className = 'progress-bar active-' + index;
+            }
+        }
+
+        function nextTool() {
+            if (isAutoPlaying) {
+                clearInterval(autoPlayInterval);
+                isAutoPlaying = false;
+                document.querySelector('button:nth-of-type(2)').textContent = '▶ Play';
+            }
+            showPage(currentIndex + 1);
+        }
+
+        function previousTool() {
+            if (isAutoPlaying) {
+                clearInterval(autoPlayInterval);
+                isAutoPlaying = false;
+                document.querySelector('button:nth-of-type(2)').textContent = '▶ Play';
+            }
+            showPage(currentIndex - 1);
+        }
+
+        function toggleAutoPlay() {
+            const btn = document.querySelector('button:nth-of-type(2)');
+            if (isAutoPlaying) {
+                clearInterval(autoPlayInterval);
+                isAutoPlaying = false;
+                btn.textContent = '▶ Play';
+            } else {
+                isAutoPlaying = true;
+                btn.textContent = '⏸ Pause';
+                autoPlayInterval = setInterval(() => {
+                    showPage(currentIndex + 1);
+                }, 5000);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            showPage(0);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextTool();
+            if (e.key === 'ArrowLeft') previousTool();
+            if (e.key === ' ') toggleAutoPlay();
+        });
+    </script>
+</body>
+</html>
