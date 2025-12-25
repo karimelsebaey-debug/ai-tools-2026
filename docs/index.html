@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 5 AI Tools 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; width: 100%; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            height: 90vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        .progress-bar {
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #ff6b6b, #ffc107, #4caf50, #2196f3, #9c27b0);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .progress-bar.active-cover { width: 16.67%; }
+        .progress-bar.active-1 { width: 33.33%; }
+        .progress-bar.active-2 { width: 50%; }
+        .progress-bar.active-3 { width: 66.67%; }
+        .progress-bar.active-4 { width: 83.33%; }
+        .progress-bar.active-5 { width: 100%; }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 36px; margin-bottom: 10px; font-weight: 800; }
+        .header p { font-size: 14px; opacity: 0.9; }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover-page, .tool-card {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            transition: opacity 0.8s ease;
+        }
+        .cover-page.active, .tool-card.active {
+            opacity: 1;
+            pointer-events: auto;
+            position: relative;
+        }
+        
+        .cover-title { font-size: 40px; font-weight: 800; color: #ff6b6b; margin-bottom: 15px; }
+        .cover-subtitle { font-size: 16px; color: #d0d0ff; margin-bottom: 30px; }
+        
+        .highlights {
+            display: grid;
+            gap: 12px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+        .highlight-item {
+            background: rgba(102, 126, 234, 0.3);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            color: #d0d0ff;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .cover-footer { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(102, 126, 234, 0.3); color: #9090b0; font-size: 12px; }
+        
+        .rank-badge { font-size: 50px; font-weight: 800; color: #ff6b6b; margin-bottom: 15px; }
+        
+        .tool-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tool-icon svg { width: 100%; height: 100%; }
+        
+        .tool-name { font-size: 30px; font-weight: 800; color: #667eea; margin-bottom: 12px; }
+        .tool-description { font-size: 14px; color: #d0d0ff; margin-bottom: 20px; }
+        
+        .tool-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .detail-box {
+            background: rgba(102, 126, 234, 0.2);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        .detail-label { font-size: 11px; color: #9090b0; margin-bottom: 6px; text-transform: uppercase; }
+        .detail-value { font-size: 14px; font-weight: 700; color: #ffffff; }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="header">
+            <h1>🚀 TOP 5 AI TOOLS 2026</h1>
+            <p>✨ The Ultimate AI Comparison ✨</p>
+        </div>
+        
+        <div class="content">
+            <div class="cover-page active">
+                <div class="cover-title">Top AI Tools of the Year</div>
+                <div class="cover-subtitle">Your Essential Guide to the Most Powerful AI Tools</div>
+                <div class="highlights">
+                    <div class="highlight-item"><span>⚡ Productivity & Automation</span></div>
+                    <div class="highlight-item"><span>🎨 Content Creation</span></div>
+                    <div class="highlight-item"><span>📊 Data & Analytics</span></div>
+                    <div class="highlight-item"><span>💼 Business Applications</span></div>
+                    <div class="highlight-item"><span>🎬 Creative & Media Tools</span></div>
+                </div>
+                <div class="cover-footer">👉 Click "Next" to explore the top 5 AI tools!</div>
+            </div>
+
+            <div class="tool-card">
+                <div class="rank-badge">1st</div>
+                <div class="tool-name">ChatGPT 🚀</div>
+                <div class="tool-description">Best all-round assistant for creativity, coding & problem-solving</div>
+                <div class="tool-details">
+                    <div class="detail-box"><div class="detail-label">Accuracy</div><div class="detail-value">⭐⭐⭐ (3/5)</div></div>
+                    <div class="detail-box"><div class="detail-label">Users</div><div class="detail-value">800M WEEKLY</div></div>
+                    <div class="detail-box"><div class="detail-label">Best For</div><div class="detail-value">Q&A, Writing, Coding</div></div>
+                    <div class="detail-box"><div class="detail-label">Pricing</div><div class="detail-value">FREE + $20/mo</div></div>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="rank-badge">2nd</div>
+                <div class="tool-name">Claude 🌟</div>
+                <div class="tool-description">Excels at analysis, careful writing & long documents</div>
+                <div class="tool-details">
+                    <div class="detail-box"><div class="detail-label">Accuracy</div><div class="detail-value">⭐⭐⭐⭐⭐ (5/5)</div></div>
+                    <div class="detail-box"><div class="detail-label">Users</div><div class="detail-value">30M MONTHLY</div></div>
+                    <div class="detail-box"><div class="detail-label">Best For</div><div class="detail-value">Analysis, Reports, Writing</div></div>
+                    <div class="detail-box"><div class="detail-label">Pricing</div><div class="detail-value">FREE + $20/mo</div></div>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="rank-badge">3rd</div>
+                <div class="tool-name">Google Gemini</div>
+                <div class="tool-description">Strong Google integration & excellent web research</div>
+                <div class="tool-details">
+                    <div class="detail-box"><div class="detail-label">Accuracy</div><div class="detail-value">⭐⭐⭐⭐ (4/5)</div></div>
+                    <div class="detail-box"><div class="detail-label">Users</div><div class="detail-value">700M MONTHLY</div></div>
+                    <div class="detail-box"><div class="detail-label">Best For</div><div class="detail-value">Web Search, Google Workspace</div></div>
+                    <div class="detail-box"><div class="detail-label">Pricing</div><div class="detail-value">FREE + $20/mo</div></div>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="rank-badge">4th</div>
+                <div class="tool-name">Perplexity ⭐</div>
+                <div class="tool-description">Best answer engine with real-time web & citations</div>
+                <div class="tool-details">
+                    <div class="detail-box"><div class="detail-label">Accuracy</div><div class="detail-value">⭐⭐⭐⭐⭐ (5/5)</div></div>
+                    <div class="detail-box"><div class="detail-label">Growth</div><div class="detail-value">🚀 +370% YoY</div></div>
+                    <div class="detail-box"><div class="detail-label">Best For</div><div class="detail-value">Research, Citations, Facts</div></div>
+                    <div class="detail-box"><div class="detail-label">Pricing</div><div class="detail-value">FREE + $20/mo</div></div>
+                </div>
+            </div>
+
+            <div class="tool-card">
+                <div class="rank-badge">5th</div>
+                <div class="tool-name">DeepSeek 🚀</div>
+                <div class="tool-description">Cost-efficient reasoning AI with advanced thinking capabilities</div>
+                <div class="tool-details">
+                    <div class="detail-box"><div class="detail-label">Accuracy</div><div class="detail-value">⭐⭐⭐⭐⭐ (5/5)</div></div>
+                    <div class="detail-box"><div class="detail-label">Cost</div><div class="detail-value">💰 99% Cheaper</div></div>
+                    <div class="detail-box"><div class="detail-label">Best For</div><div class="detail-value">Coding, Math, Logic</div></div>
+                    <div class="detail-box"><div class="detail-label">Pricing</div><div class="detail-value">FREE (R1)</div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="previousTool()">← Previous</button>
+            <button onclick="toggleAutoPlay()">▶ Play</button>
+            <button onclick="nextTool()">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const coverPage = document.querySelector('.cover-page');
+        const toolCards = document.querySelectorAll('.tool-card');
+        const totalPages = toolCards.length + 1;
+        let autoPlayInterval;
+        let isAutoPlaying = false;
+
+        function showPage(index) {
+            if (index >= totalPages) index = 0;
+            if (index < 0) index = totalPages - 1;
+            currentIndex = index;
+
+            coverPage.classList.remove('active');
+            toolCards.forEach(card => card.classList.remove('active'));
+
+            const progressBar = document.getElementById('progressBar');
+
+            if (index === 0) {
+                coverPage.classList.add('active');
+                progressBar.className = 'progress-bar active-cover';
+            } else {
+                toolCards[index - 1].classList.add('active');
+                progressBar.className = 'progress-bar active-' + index;
+            }
+        }
+
+        function nextTool() {
+            if (isAutoPlaying) {
+                clearInterval(autoPlayInterval);
+                isAutoPlaying = false;
+                document.querySelector('button:nth-of-type(2)').textContent = '▶ Play';
+            }
+            showPage(currentIndex + 1);
+        }
+
+        function previousTool() {
+            if (isAutoPlaying) {
+                clearInterval(autoPlayInterval);
+                isAutoPlaying = false;
+                document.querySelector('button:nth-of-type(2)').textContent = '▶ Play';
+            }
+            showPage(currentIndex - 1);
+        }
+
+        function toggleAutoPlay() {
+            const btn = document.querySelector('button:nth-of-type(2)');
+            if (isAutoPlaying) {
+                clearInterval(autoPlayInterval);
+                isAutoPlaying = false;
+                btn.textContent = '▶ Play';
+            } else {
+                isAutoPlaying = true;
+                btn.textContent = '⏸ Pause';
+                autoPlayInterval = setInterval(() => {
+                    showPage(currentIndex + 1);
+                }, 5000);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            showPage(0);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextTool();
+            if (e.key === 'ArrowLeft') previousTool();
+            if (e.key === ' ') toggleAutoPlay();
+        });
+    </script>
+</body>
+</html>
