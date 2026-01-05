@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أهم 5 أدوات ذكاء اصطناعي 2024</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #f1f5f9;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(94, 234, 212, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #5eead4, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .warning {
+            color: #fbbf24;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .slides-container {
+            position: relative;
+            height: 600px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateX(30px);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-left: 20px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .tool-title {
+            font-size: 2.2rem;
+            color: #f1f5f9;
+        }
+
+        .tool-number {
+            background: linear-gradient(90deg, #5eead4, #38bdf8);
+            color: #0f172a;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-left: 15px;
+        }
+
+        .tool-description {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            border: 1px solid rgba(94, 234, 212, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature i {
+            color: #5eead4;
+        }
+
+        .usage {
+            background: rgba(30, 41, 59, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            border-right: 5px solid;
+            margin-top: 20px;
+        }
+
+        .usage h3 {
+            color: #5eead4;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .usage ul {
+            list-style: none;
+            padding-right: 20px;
+        }
+
+        .usage li {
+            margin-bottom: 10px;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        .usage li:before {
+            content: "▸";
+            color: #38bdf8;
+            position: absolute;
+            right: -15px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .nav-btn {
+            background: rgba(30, 41, 59, 0.7);
+            border: none;
+            color: #f1f5f9;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: rgba(94, 234, 212, 0.2);
+            transform: scale(1.1);
+        }
+
+        .slide-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(100, 116, 139, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #5eead4;
+            transform: scale(1.2);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(94, 234, 212, 0.2);
+        }
+
+        .footer h3 {
+            color: #5eead4;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .footer p {
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .hashtag {
+            color: #fbbf24;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-top: 15px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ألوان خاصة بكل أداة */
+        .chatgpt { border-right-color: #10a37f; }
+        .claude { border-right-color: #d4a574; }
+        .gemini { border-right-color: #ea4335; }
+        .perplexity { border-right-color: #8b5cf6; }
+        .deepseek { border-right-color: #3b82f6; }
+
+        /* ألوان الأيقونات */
+        .chatgpt-icon { color: #10a37f; }
+        .claude-icon { color: #d4a574; }
+        .gemini-icon { color: #ea4335; }
+        .perplexity-icon { color: #8b5cf6; }
+        .deepseek-icon { color: #3b82f6; }
+
+        /* تأثيرات خاصة */
+        .highlight {
+            background: linear-gradient(90deg, rgba(94, 234, 212, 0.2), transparent);
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .tool-title { font-size: 1.8rem; }
+            .tool-icon { font-size: 2.5rem; width: 60px; height: 60px; }
+            .slides-container { height: 700px; }
+            .slide { padding: 25px; }
+            .features { gap: 10px; }
+            .feature { padding: 10px 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 أقوى 5 أدوات ذكاء اصطناعي في 2024</h1>
+            <p>أدوات ستغير طريقة عملك ودراستك تماماً! تعرف على الخمسة الأقوى وكيف تستفيد منها</p>
+            <p class="warning">⚠️ الأداة الخامسة صدمت المبرمجين حول العالم!</p>
+        </div>
+
+        <div class="slides-container">
+            <!-- الشريحة الأولى: ChatGPT -->
+            <div class="slide active" id="slide1">
+                <div class="slide-content">
+                    <div class="tool-header">
+                        <div class="tool-number">1</div>
+                        <div class="tool-icon chatgpt-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h2 class="tool-title">ChatGPT</h2>
+                    </div>
+                    
+                    <div class="tool-description">
+                        <p>الأداة الأشهر والأكثر مرونة! <span class="highlight">الجوكر المتعدد المهارات</span> الذي يساعدك في كل شيء من كتابة الإيميلات إلى توليد الأفكار الإبداعية.</p>
+                        <p>النسخة المجانية كافية للبداية، لكنه <span class="highlight">غير دقيق أحياناً</span> وقد يقدم معلومات غير صحيحة.</p>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature"><i class="fas fa-check-circle"></i> كتابة إيميلات رسمية</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> تلخيص المقالات</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> اقتراح أفكار المشاريع</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> الترجمة والنصوص الإبداعية</div>
+                    </div>
+                    
+                    <div class="usage chatgpt">
+                        <h3>📝 متى تستخدم ChatGPT؟</h3>
+                        <ul>
+                            <li>عندما تحتاج مساعدة في كتابة نصوص إبداعية</li>
+                            <li>لتوليد أفكار جديدة لمشاريعك</li>
+                            <li>للمساعدة في صياغة رسائل وعروض تقديمية</li>
+                            <li>كمساعد سريع للأسئلة العامة (مع التأكد من المعلومات)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الشريحة الثانية: Claude -->
+            <div class="slide" id="slide2">
+                <div class="slide-content">
+                    <div class="tool-header">
+                        <div class="tool-number">2</div>
+                        <div class="tool-icon claude-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h2 class="tool-title">Claude</h2>
+                    </div>
+                    
+                    <div class="tool-description">
+                        <p>الأداة <span class="highlight">الأكثر دقة وأمانة</span>! لا تؤلف المعلومات من عندها، وإذا لم تجد المعلومة الصحيحة تعترف بذلك.</p>
+                        <p>تفكر <span class="highlight">بعقل بشري منطقي</span>، وتستطيع تلخيص كتب كاملة بدقة عالية خلال ثوانٍ!</p>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature"><i class="fas fa-check-circle"></i> تحليل المستندات الطويلة</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> كتابة التقارير المهنية</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> كتابة أكواد HTML/JavaScript</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> التفكير المنطقي والتحليل</div>
+                    </div>
+                    
+                    <div class="usage claude">
+                        <h3>📚 متى تستخدم Claude؟</h3>
+                        <ul>
+                            <li>عندما تريد تحليل مستند طويل أو كتاب</li>
+                            <li>لإعداد تقارير مهنية دقيقة</li>
+                            <li>للحصول على إجابات أمينة وموثوقة</li>
+                            <li>للمساعدة في حل المشكلات المعقدة منطقياً</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الشريحة الثالثة: Gemini -->
+            <div class="slide" id="slide3">
+                <div class="slide-content">
+                    <div class="tool-header">
+                        <div class="tool-number">3</div>
+                        <div class="tool-icon gemini-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <h2 class="tool-title">Google Gemini</h2>
+                    </div>
+                    
+                    <div class="tool-description">
+                        <p>المساعد الشخصي <span class="highlight">المتغلغل في حياتك</span>! متكامل مع جميع خدمات جوجل مما يجعله يعرف كل تفاصيلك.</p>
+                        <p>باستخدام تقنية <span class="highlight">Imagen 3</span>، يمكنه إنشاء صور احترافية مجاناً، وفهم الصور والفيديوهات!</p>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature"><i class="fas fa-check-circle"></i> البحث في إيميلاتك</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> إدارة ملفات Google Drive</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> فهم الصور والفيديوهات</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> إنشاء الصور بتقنية Imagen 3</div>
+                    </div>
+                    
+                    <div class="usage gemini">
+                        <h3>🔍 متى تستخدم Gemini؟</h3>
+                        <ul>
+                            <li>للبحث عن معلومات في بريدك الإلكتروني</li>
+                            <li>لإدارة وتلخيص ملفاتك في Google Drive</li>
+                            <li>عندما تحتاج تحليل صور أو فيديوهات</li>
+                            <li>لإنشاء صور احترافية مجاناً</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الشريحة الرابعة: Perplexity -->
+            <div class="slide" id="slide4">
+                <div class="slide-content">
+                    <div class="tool-header">
+                        <div class="tool-number">4</div>
+                        <div class="tool-icon perplexity-icon">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                        <h2 class="tool-title">Perplexity</h2>
+                    </div>
+                    
+                    <div class="tool-description">
+                        <p><span class="highlight">"جوجل على منشطات"</span>! تبحث في الإنترنت لحظياً وتزودك بالمصادر والمراجع لكل معلومة.</p>
+                        <p>لا تؤلف المعلومات أبداً، وتتيح لك <span class="highlight">التأكد من كل مصدر</span> بنفسك، مما يجعلها مثالية للبحث الأكاديمي.</p>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature"><i class="fas fa-check-circle"></i> البحث المباشر في الإنترنت</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> توفير المصادر والمراجع</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> البحث الأكاديمي الدقيق</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> تحليل الاتجاهات الاقتصادية</div>
+                    </div>
+                    
+                    <div class="usage perplexity">
+                        <h3>🌐 متى تستخدم Perplexity؟</h3>
+                        <ul>
+                            <li>للأبحاث الأكاديمية والمقالات العلمية</li>
+                            <li>عندما تحتاج مصادر موثوقة للمعلومات</li>
+                            <li>لتحليل الاتجاهات الاقتصادية والسياسية</li>
+                            <li>لإعداد دراسات الجدوى والتحليل الدقيق</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الشريحة الخامسة: DeepSeek -->
+            <div class="slide" id="slide5">
+                <div class="slide-content">
+                    <div class="tool-header">
+                        <div class="tool-number">5</div>
+                        <div class="tool-icon deepseek-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h2 class="tool-title">DeepSeek</h2>
+                    </div>
+                    
+                    <div class="tool-description">
+                        <p><span class="highlight">الصدمة التي غيرت قواعد اللعبة</span>! أداة مجانية بالكامل تفوقت على أدوات مدفوعة باهظة الثمن.</p>
+                        <p>عبقري <span class="highlight">الرياضيات والبرمجة</span>، يستخدم تقنية DeepThink لحل المشكلات خطوة بخطوة، مما جعله منقذ المبرمجين!</p>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature"><i class="fas fa-check-circle"></i> البرمجة بلغات متعددة</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> حل المسائل الرياضية المعقدة</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> التفكير المنطقي DeepThink</div>
+                        <div class="feature"><i class="fas fa-check-circle"></i> مجاني بالكامل!</div>
+                    </div>
+                    
+                    <div class="usage deepseek">
+                        <h3>💻 متى تستخدم DeepSeek؟</h3>
+                        <ul>
+                            <li>إذا كنت مبرمجاً وتحتاج مساعدة في الأكواد</li>
+                            <li>لحل المسائل الرياضية والمنطقية المعقدة</li>
+                            <li>عندما تحتاج أداة قوية ومجانية بالكامل</li>
+                            <li>للتحليل المنطقي خطوة بخطوة</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn prev-btn">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="nav-btn next-btn">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+        </div>
+
+        <div class="slide-indicators">
+            <div class="indicator active" data-slide="1"></div>
+            <div class="indicator" data-slide="2"></div>
+            <div class="indicator" data-slide="3"></div>
+            <div class="indicator" data-slide="4"></div>
+            <div class="indicator" data-slide="5"></div>
+        </div>
+
+        <div class="footer">
+            <h3>🚀 استعد للثورة القادمة!</h3>
+            <p>هذه الأدوات ليست مجرد تقنيات عابرة، بل هي مستقبل العمل والدراسة. اختبر كل أداة واكتشف أيها يناسب احتياجاتك أكثر.</p>
+            <p class="hashtag">#أدوات_الذكاء_الاصطناعي #مستقبل_التكنولوجيا #تطوير_المهارات</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentSlide = 0;
+
+            // تهيئة العرض
+            function initSlider() {
+                updateSlide();
+                startAutoSlide();
+            }
+
+            // تحديث الشريحة الحالية
+            function updateSlide() {
+                // إخفاء جميع الشرائح
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // إظهار الشريحة الحالية
+                slides[currentSlide].classList.add('active');
+                
+                // تحديث المؤشرات
+                indicators.forEach((indicator, index) => {
+                    if (index === currentSlide) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+
+            // الانتقال للشريحة التالية
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlide();
+                resetAutoSlide();
+            }
+
+            // الانتقال للشريحة السابقة
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateSlide();
+                resetAutoSlide();
+            }
+
+            // الانتقال لشريحة محددة
+            function goToSlide(index) {
+                currentSlide = index;
+                updateSlide();
+                resetAutoSlide();
+            }
+
+            // تفعيل التنقل التلقائي
+            let autoSlideInterval;
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 8000); // تغيير كل 8 ثواني
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            // إضافة event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+
+            // إضافة إمكانية التنقل بالسهام
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    prevSlide();
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    nextSlide();
+                }
+            });
+
+            // بدء العرض التقديمي
+            initSlider();
+
+            // إضافة تأثيرات عند التمرير
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                    }
+                });
+            }, observerOptions);
+
+            // مراقبة العناصر للمؤثرات
+            document.querySelectorAll('.feature, .usage').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
